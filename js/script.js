@@ -20,9 +20,13 @@ function dispatchCallback() {
 const store = createStore(reducer, initialState);
 store.subscribe(dispatchCallback);
 
-function getDataAction() {
-    fetch(API_ROUTE, {
+let getDataAction = async () => {
+    await fetch(API_ROUTE, {
         method: 'GET',
+        headers: {
+            'Host': 'bittrex.com',
+            'Origin': 'https://ggpo1.github.io/'
+        }
     }).then((response) => response.json()).then((body) => {
         console.log(body);
         // let airplanes = [];
