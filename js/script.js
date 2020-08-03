@@ -29,11 +29,6 @@ let getDataAction = async () => {
     await fetch(API_ROUTE, {
         method: 'GET'
     }).then((response) => response.json()).then((body) => {
-        // console.log(body);
-        // let airplanes = [];
-        // Object.keys(body)
-        //     .filter(key => typeof body[key] === "object")
-        //     .forEach(key => airplanes.push(converter(key, body[key])));
         store.dispatch(fillAction(body));
     });
 }
