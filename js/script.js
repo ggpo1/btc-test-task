@@ -1,4 +1,4 @@
-const API_ROUTE = 'https://api.bittrex.com/api/v1.1/public/getmarketsummary?market=usd-btc';
+const API_ROUTE = 'http://localhost:3000';
 
 // actions
 const fillAction = (data) => { return { type: 'FILL', data } };
@@ -15,6 +15,11 @@ function reducer(state, action) {
 
 function dispatchCallback() {
     // fill front
+    const block = document.getElementById('data-block'),
+        price = store.getState().price;
+
+    block.innerHTML = '';
+    block.innerHTML = price.toFixed(2);
 }
 
 const store = createStore(reducer, initialState);
@@ -22,13 +27,9 @@ store.subscribe(dispatchCallback);
 
 let getDataAction = async () => {
     await fetch(API_ROUTE, {
-        method: 'GET',
-        headers: {
-            'Host': 'bittrex.com',
-            'Origin': 'https://ggpo1.github.io/'
-        }
+        method: 'GET'
     }).then((response) => response.json()).then((body) => {
-        console.log(body);
+        // console.log(body);
         // let airplanes = [];
         // Object.keys(body)
         //     .filter(key => typeof body[key] === "object")

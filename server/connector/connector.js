@@ -39,14 +39,5 @@ function makeRequest(verb, endpoint, data = {}) {
   );
 }
 
-(async function main() {
-  try {
-    const result = await makeRequest('GET', `orderBook/L2`, {
-    //   filter: { symbol: 'XBTUSD' },
-        // data: { symbol: 'xbt', depth: 25 }
-    });
-    console.log(result[0]);
-  } catch (e) {
-    console.error(e);
-  };
-}());
+module.exports.makeRequest = makeRequest;
+
